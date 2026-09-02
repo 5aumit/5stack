@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feedback"
+  short_description: "Record explicit feedback about 5stack"
+  default_prompt: "Use $feedback to record this feedback about 5stack: "

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Route"
+  short_description: "Choose the smallest sufficient workflow"
+  default_prompt: "Use $route to recommend the smallest sufficient workflow for this request."
