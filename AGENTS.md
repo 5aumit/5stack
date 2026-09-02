@@ -114,7 +114,7 @@ Line count is not review burden. Give extra attention to policy, ranking, data s
 
 ## Project memory
 
-When `.agent-journal/` exists, read only the entries relevant to the task and maintain it when meaningful project knowledge changes. Follow [the project memory contract](references/project-memory.md).
+When `.agent-journal/` exists, read only the entries relevant to the task and maintain it when meaningful project knowledge changes. The full contract is installed at `~/.agents/5stack/references/project-memory.md`.
 
 Do not create journal records for routine mechanics or trivial work. Store conclusions, not conversations. Current truth wins over history except for intentionally historical review and feedback records.
 
@@ -145,7 +145,7 @@ When manual review is warranted, guide Saumit through conceptual chunks. For eac
 
 ## Trust handoff
 
-For meaningful completed work, follow [the trust handoff contract](references/trust-handoff.md). Scale it down for small tasks.
+For meaningful completed work, follow the contract at `~/.agents/5stack/references/trust-handoff.md`. Scale it down for small tasks.
 
 ## Large agent workflows
 

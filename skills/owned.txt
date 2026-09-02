@@ -1,0 +1,16 @@
+5stack-setup
+route
+feedback
+reflect
+brainstorming
+grilling
+grill-with-docs
+to-spec
+to-tickets
+implement
+code-review
+manual-review
+tdd
+diagnosing-bugs
+domain-modeling
+review-5stack-feedback

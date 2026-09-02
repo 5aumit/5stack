@@ -37,24 +37,8 @@ done
 
 BACKUP_DIR="$AGENTS_DIR/5stack-backups/v1"
 SKILLS_DIR="$AGENTS_DIR/skills"
-OWNED_SKILLS=(
-  5stack-setup
-  route
-  feedback
-  reflect
-  brainstorming
-  grilling
-  grill-with-docs
-  to-spec
-  to-tickets
-  implement
-  code-review
-  manual-review
-  tdd
-  diagnosing-bugs
-  domain-modeling
-  review-5stack-feedback
-)
+ROOT_LINK="$AGENTS_DIR/5stack"
+mapfile -t OWNED_SKILLS < "$STACK_REPO/skills/owned.txt"
 
 say_action() {
   if ((DRY_RUN)); then
@@ -95,6 +79,7 @@ install_link() {
   fi
 }
 
+install_link "$STACK_REPO" "$ROOT_LINK" "$BACKUP_DIR/root"
 install_link "$STACK_REPO/AGENTS.md" "$AGENTS_DIR/AGENTS.md" "$BACKUP_DIR/AGENTS.md"
 
 for skill in "${OWNED_SKILLS[@]}"; do

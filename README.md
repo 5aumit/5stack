@@ -24,7 +24,7 @@ bash scripts/check.sh
 bash scripts/install.sh
 ```
 
-The installer links 5stack-owned instructions and skills into `~/.agents`. It backs up conflicting files and does not remove unrelated skills. Start a fresh Codex session after installation.
+The installer links the repository at `~/.agents/5stack`, then links 5stack-owned instructions and skills into `~/.agents`. It backs up conflicting files and does not remove unrelated skills. Start a fresh Codex session after installation.
 
 To preview changes:
 
@@ -37,6 +37,8 @@ To remove 5stack-owned links and restore safe backups:
 ```bash
 bash scripts/uninstall.sh
 ```
+
+Run the uninstaller before moving this repository. If it was already moved, update `~/.agents/5stack` to the new repository path before uninstalling.
 
 ## Project memory
 
