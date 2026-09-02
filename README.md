@@ -38,7 +38,7 @@ To remove 5stack-owned links and restore safe backups:
 bash scripts/uninstall.sh
 ```
 
-Run the uninstaller before moving this repository. If it was already moved, update `~/.agents/5stack` to the new repository path before uninstalling.
+Run the uninstaller before moving this repository. If it was already moved, restore the old path temporarily or inspect and remove the broken 5stack links manually. The uninstaller deliberately leaves links it cannot prove belong to the current checkout.
 
 ## Project memory
 
