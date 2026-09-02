@@ -39,6 +39,7 @@ OWNED_SKILLS=(
   route
   feedback
   reflect
+  brainstorming
   grilling
   grill-with-docs
   to-spec

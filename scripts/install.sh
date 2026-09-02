@@ -42,6 +42,7 @@ OWNED_SKILLS=(
   route
   feedback
   reflect
+  brainstorming
   grilling
   grill-with-docs
   to-spec
@@ -107,5 +108,9 @@ for skill in "${OWNED_SKILLS[@]}"; do
     "$BACKUP_DIR/skills/$skill"
 done
 
-echo "5stack installation complete. Start a fresh Codex session to load it."
+if ((DRY_RUN)); then
+  echo "5stack installation dry run complete."
+else
+  echo "5stack installation complete. Start a fresh Codex session to load it."
+fi
 echo "Backups, when needed: $BACKUP_DIR"

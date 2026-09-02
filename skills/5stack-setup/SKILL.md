@@ -34,6 +34,7 @@ Use the templates under the installed 5stack repository's `templates/` directory
 - Keep unresolved migration questions in `uncertainties.md`.
 - Move or copy an old durable decision only when its future reasoning value warrants it and the proposal was approved. Avoid duplicate sources of truth. Preserve historical material when moving it would lose context.
 - Preserve `CONTEXT.md` as a domain glossary when useful. Do not merge it into engineering memory.
+- After verification, remove only cache or temporary artifacts created by the setup run. Report the final Git state accurately.
 
 For a GitHub remote, recommend GitHub Issues through `gh`. Small work still needs no issue. Record the chosen tracker in the project instruction block, not in a new configuration system.
 
