@@ -30,6 +30,8 @@ Use these defaults:
 - Medium: add a short plan or spec only when it removes real uncertainty or review burden.
 - Large, vague, architectural, risky, or multi-session: recommend grilling, a spec, tickets, or stronger review only when each step adds useful confidence.
 
+When recommending among possible tasks, rank them by how well they advance the user's stated outcome and priorities before considering ease of execution. Use time and other constraints to find a feasible slice, not to substitute unrelated lower-value work when meaningful progress is possible.
+
 Do not start grilling, a spec, tickets, TDD, independent review, durable decisions, or manual review merely because those tools exist.
 
 If important product, behavior, methodology, architecture, or policy decisions are hidden, state that briefly and recommend a grilling pass. Facts are the agent's job to investigate. Decisions that materially change the result belong to the user.

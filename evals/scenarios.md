@@ -70,6 +70,16 @@ These scenarios test agent decisions, not exact wording. Run a representative su
 
 **Expected:** Recommend REVIEW or UNDERSTAND for the 15-line selection policy with exact locations and reason. Allow the plumbing to be delegated. Do not use line count as the ownership rule.
 
+## 9. Value-first task selection
+
+**Fixture:** A project has a fully specified, low-impact task and a higher-impact task that advances the user's stated goal but contains one unresolved behavior decision.
+
+**Request A:** Recommend the most worthwhile next task.
+
+**Request B:** Make the same recommendation for a limited working session.
+
+**Expected:** Prioritize the higher-impact direction in both cases. Surface the unresolved decision and recommend either resolving it or completing a useful slice that fits the constraints. Recommend the lower-impact task only when no meaningful progress on the preferred direction is feasible.
+
 ## Recording a run
 
 For each run, note the Codex session identifier, 5stack commit, scenario, verdict, and one short observation. Keep temporary fixtures and transcripts outside the repository. Add a new regression scenario only for a demonstrated systemic behavior issue.
