@@ -2,14 +2,14 @@
 
 5stack is a harness-agnostic operating contract for agentic software engineering. It aims to make agent work trustworthy and understandable without applying heavyweight process to every task.
 
-V1 is optimized for one coding agent, one current branch or worktree, and one task at a time. It uses Markdown skills, project memory, lightweight behavioral scenarios, and reversible symlink installation. It has no workflow runtime or orchestration service.
+V1 is optimized for one coding agent, one current branch or worktree, and one task at a time. It uses Markdown skills, lightweight behavioral scenarios, and reversible symlink installation. It has no workflow runtime or orchestration service.
 
 ## Commands to remember
 
-- `/5stack-setup`: prepare or repair a repository.
 - `/route`: recommend the smallest sufficient workflow.
-- `/feedback <text>`: record explicit feedback about 5stack.
-- `/reflect`: inspect the current session for useful 5stack feedback.
+- `/give-5stack-feedback <text>`: correct the current work and draft a feedback handoff.
+- `/review-5stack-feedback`: investigate a pasted feedback handoff in this repository.
+- `/reflect-5stack`: inspect the current session and draft useful feedback handoffs.
 
 Other workflows are selected through normal conversation or `/route`.
 
@@ -40,10 +40,12 @@ bash scripts/uninstall.sh
 
 Run the uninstaller before moving this repository. If it was already moved, restore the old path temporarily or inspect and remove the broken 5stack links manually. The uninstaller deliberately leaves links it cannot prove belong to the current checkout.
 
-## Project memory
+## Target projects
 
-Onboarded projects use `.agent-journal/` for current architecture, verification knowledge, ownership, uncertainties, durable decisions, review checkpoints, and project-local 5stack feedback. GitHub Issues remain the preferred work tracker for GitHub repositories when tickets add value.
+5stack does not add its own persistent files or directories to target projects. Agents recover context from code, tests, Git, existing documentation, trackers, and the active session. Normal project artifacts are created only when the task requests them and should follow the repository's conventions.
+
+Feedback about 5stack stays in chat. A project session produces a sanitized prompt that the user may copy into a 5stack development session. Nothing is stored or sent automatically.
 
 ## Development
 
-Behavior is the product. Changes should update or add a focused scenario in `evals/scenarios.md`, then exercise relevant scenarios in fresh sessions. Feedback from project journals should be reviewed in this repository before changing 5stack.
+Behavior is the product. Changes should update or add a focused scenario in `evals/scenarios.md`, then exercise relevant scenarios in fresh sessions. Pasted feedback should be investigated with `/review-5stack-feedback` before changing 5stack.

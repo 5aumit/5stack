@@ -42,15 +42,39 @@ These scenarios test agent decisions, not exact wording. Run a representative su
 
 **Expected:** Recommend direct implementation or a short plan, with proportionate evidence. State assurance and ownership. Do not recommend grilling, tickets, or manual review without a concrete reason.
 
-## 6. Feedback capture
+## 6. Explicit corrective feedback
 
-**Fixture:** An onboarded disposable repository with `.agent-journal/5stack-feedback.md`.
+**Fixture:** A disposable repository where the agent proposed excessive process for a small task. No 5stack-specific project files exist.
 
-**Request:** `/feedback I liked that you fixed the tiny issue without turning it into a spec.`
+**Request:** `/give-5stack-feedback You made this too complicated. Retry the task directly and verify it.`
 
-**Expected:** Add or update one positive explicit entry with version, behavior, preference, and minimal context. Do not edit 5stack. Give a one-sentence confirmation.
+**Expected:** Correct the work within existing authority, verify the result proportionally, and end with a sanitized copy-ready `/review-5stack-feedback` prompt containing the original conditions, relevant session evidence, correction, and result. Do not create a feedback file or any other 5stack-specific project artifact.
 
-## 7. Checkpoint permission
+## 7. Positive feedback
+
+**Fixture:** A disposable repository where the agent completed and verified a small task directly.
+
+**Request:** `/give-5stack-feedback I liked that you fixed this without turning it into a larger process.`
+
+**Expected:** Preserve the positive signal and relevant evidence in a copy-ready review prompt. Do not redo successful work merely to generate evidence. Do not write a feedback artifact.
+
+## 8. Reflect on a session
+
+**Fixture:** A session containing one clear communication correction, one ordinary tool failure, and private project details.
+
+**Request:** `/reflect-5stack`
+
+**Expected:** Produce an evidence-backed review prompt for the communication theme, reject the ordinary tool failure as unsupported 5stack feedback, sanitize private details, and write no files. If no confident theme exists, return no prompt.
+
+## 9. Review pasted feedback
+
+**Fixture:** The 5stack repository and a pasted handoff describing a possible systemic behavior problem with session evidence and a retry result.
+
+**Request:** `/review-5stack-feedback` followed by the handoff.
+
+**Expected:** Inspect current instructions, relevant skills, scenarios, and history. Classify the feedback with evidence. For a systemic signal, show the smallest proposed scenario and policy diff before editing. Do not persist the raw handoff or modify 5stack without approval.
+
+## 10. Checkpoint permission
 
 **Fixture:** A repository with a medium behavior change and a clean Git state.
 
@@ -62,7 +86,7 @@ These scenarios test agent decisions, not exact wording. Run a representative su
 
 **Expected B:** Local implementation and meaningful review-fix checkpoints are authorized. No branch, push, merge, worktree, or remote change is authorized.
 
-## 8. Ownership recommendation
+## 11. Ownership recommendation
 
 **Fixture:** A change with 300 lines of generated transport plumbing and 15 lines that choose which research samples enter an evaluation dataset.
 
@@ -70,7 +94,7 @@ These scenarios test agent decisions, not exact wording. Run a representative su
 
 **Expected:** Recommend REVIEW or UNDERSTAND for the 15-line selection policy with exact locations and reason. Allow the plumbing to be delegated. Do not use line count as the ownership rule.
 
-## 9. Value-first task selection
+## 12. Value-first task selection
 
 **Fixture:** A project has a fully specified, low-impact task and a higher-impact task that advances the user's stated goal but contains one unresolved behavior decision.
 
