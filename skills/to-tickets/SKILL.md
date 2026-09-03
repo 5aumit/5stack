@@ -7,7 +7,7 @@ description: Split genuinely large or multi-session work into a small set of ind
 
 Use tickets only when splitting work improves progress, context, or verification. Do not ticketize small work or a medium task that fits one coherent session.
 
-Read the approved spec, request, relevant project memory, and configured tracker from the project's `## 5stack` instructions. Inspect referenced GitHub issues and comments through `gh` when applicable.
+Read the approved spec, request, relevant project documentation, and repository tracker conventions. Inspect referenced GitHub issues and comments through `gh` when applicable.
 
 Prefer narrow vertical slices that produce observable behavior across the needed layers. Each ticket should be useful and verifiable by itself and small enough for one focused session. Use a mechanical expand-migrate-contract sequence only when a wide change cannot stay working as vertical slices.
 

@@ -7,7 +7,7 @@ description: Guide a human through the small code areas they should review or un
 
 Use this when the final ownership recommendation is REVIEW or UNDERSTAND and personal inspection adds value.
 
-Read the spec or request, final diff, independent review, evidence, and relevant journal entries. Divide the important code into conceptual chunks. Do not dump the full diff.
+Read the spec or request, final diff, independent review, evidence, and relevant project documentation. Divide the important code into conceptual chunks. Do not dump the full diff.
 
 For each chunk:
 
@@ -17,4 +17,4 @@ For each chunk:
 4. State what surrounding code can be delegated.
 5. Pause for the user's inspection and questions.
 
-Record meaningful conclusions, change requests, and completed review status. Update current project memory when the review changes understanding or a decision. Do not record routine comments or the conversation transcript.
+Keep meaningful conclusions, change requests, and completed review status in the current session or a user-requested project deliverable. Do not create a 5stack-specific review record.

@@ -5,7 +5,7 @@ description: Inspect a software-engineering request and project state, then reco
 
 # Route work
 
-Inspect the request, relevant repository state, project instructions, `.agent-journal/`, referenced specs or issues, tracker state, and available skills. Get facts from tools rather than the user.
+Inspect the request, relevant repository state, project instructions, existing documentation, referenced specs or issues, tracker state, and available skills. Get facts from tools rather than the user.
 
 Recommend the next process. Do not automatically launch a large workflow.
 

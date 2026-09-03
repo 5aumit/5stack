@@ -1,19 +1,19 @@
 ---
 name: domain-modeling
-description: Sharpen project-specific domain vocabulary and record only durable engineering decisions in the 5stack journal.
+description: Sharpen project-specific domain vocabulary without creating 5stack-specific project artifacts.
 ---
 
 # Domain modeling
 
 Use this skill when project language is vague, overloaded, or inconsistent with behavior. Reading an existing glossary does not by itself require this workflow.
 
-Keep domain vocabulary separate from engineering memory:
+Keep domain vocabulary grounded in the project:
 
-- Use `CONTEXT.md` as a concise project-specific glossary when one exists or a real vocabulary need appears.
+- Use an existing project glossary when one exists.
 - Do not put implementation details, task progress, or engineering decisions in the glossary.
 - Cross-check claimed domain behavior with code and concrete edge cases.
-- Update terms when the user resolves them.
+- Update project documentation only when the request authorizes that deliverable and follow the repository's conventions.
 
-Store an engineering decision under `.agent-journal/decisions/` only when future agents need its reasoning to avoid a likely wrong assumption or repeated debate. Include Decision, Why, Tradeoff, and Reconsider when. Do not create ADRs or maintain a second decision location.
+When a durable engineering decision should be documented, use the project's existing decision convention. If none exists, report the conclusion in chat instead of creating a 5stack-specific location.
 
 Do not manufacture terminology for ordinary programming concepts.

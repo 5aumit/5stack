@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Implement a clear software task with proportionate evidence, optional checkpoints and review, journal maintenance, and a trust-oriented handoff.
+description: Implement a clear software task with proportionate evidence, optional checkpoints and review, and a trust-oriented handoff.
 ---
 
 # Implement with 5stack
@@ -9,7 +9,7 @@ An explicit user invocation of `/implement` authorizes local implementation and 
 
 ## Before editing
 
-Inspect Git status, project instructions, relevant journal entries, the requested behavior, and existing verification. Do not overwrite unrelated changes.
+Inspect Git status, project instructions, the requested behavior, existing documentation, and verification. Do not overwrite unrelated changes.
 
 Silently assess intent, assurance, ownership, and whether checkpoints or independent review earn their cost. Surface a hidden decision before implementation. Use the abstraction checkpoint before adding a substantial maintained structure.
 
@@ -30,4 +30,4 @@ For substantial work with commit authority:
 
 Skip ceremonial commits or review for small LIGHT work.
 
-Update `.agent-journal/` only when meaningful project knowledge changed. Finish with the trust handoff scaled to the task.
+Finish with the trust handoff scaled to the task. Do not create 5stack-specific project artifacts.

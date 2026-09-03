@@ -7,7 +7,7 @@ description: Resolve meaningful hidden decisions in a vague, risky, or architect
 
 Use grilling only when unresolved decisions materially affect the product, behavior, methodology, architecture, compatibility, cost, or risk. Do not grill a clear low-risk task.
 
-Inspect the repository, tools, issues, and project memory first. Facts are the agent's job. Ask the user only for decisions.
+Inspect the repository, tools, issues, and existing documentation first. Facts are the agent's job. Ask the user only for decisions.
 
 Map dependencies between open decisions. Ask a small round of currently answerable questions, with a recommended answer and the concrete tradeoff for each. Prefer one question when it unlocks the rest. Ask another round only when prior answers reveal a new material decision.
 

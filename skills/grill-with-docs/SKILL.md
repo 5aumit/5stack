@@ -1,17 +1,17 @@
 ---
 name: grill-with-docs
-description: Run a proportionate grilling pass and record only the durable project conclusions that result.
+description: Run a proportionate grilling pass and update normal project documentation only when the request authorizes it.
 ---
 
-# Grill with project memory
+# Grill with project documentation
 
-Use the `grilling` workflow. Read relevant `.agent-journal/` files and an existing `CONTEXT.md` before asking questions.
+Use the `grilling` workflow. Read relevant existing project documentation before asking questions.
 
 As decisions settle:
 
-- update current project truth only when it materially changes;
-- keep domain vocabulary in `CONTEXT.md` when that glossary exists or a real vocabulary need appears;
-- create a file under `.agent-journal/decisions/` only when future agents need the reasoning to avoid a likely wrong assumption or repeated debate;
-- put unresolved material uncertainty in `.agent-journal/uncertainties.md`.
+- update an existing spec or other requested project document when its contents materially change;
+- keep domain vocabulary in the project's existing glossary when one exists;
+- use the project's existing decision convention when the request includes documenting decisions;
+- otherwise keep the settled decisions and remaining uncertainty in the current session handoff.
 
-Do not create documentation merely because this workflow ran. Do not create ADRs or a second decision system.
+Do not create documentation merely because this workflow ran. Do not create a 5stack-specific decision system.

@@ -5,7 +5,7 @@ description: Turn sufficiently settled requirements into a concise engineering s
 
 # Write a 5stack spec
 
-Inspect the repository, relevant journal entries, and referenced issues or prior discussion. If a material decision is still hidden, state it and recommend grilling instead of pretending the work is ready.
+Inspect the repository, relevant existing documentation, and referenced issues or prior discussion. If a material decision is still hidden, state it and recommend grilling instead of pretending the work is ready.
 
 Write only the sections that add information:
 

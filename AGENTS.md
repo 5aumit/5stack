@@ -20,7 +20,7 @@
 Before substantial work, silently assess:
 
 - Is the intended outcome sufficiently clear?
-- What facts can be learned from the repository, tools, issue tracker, or project memory?
+- What facts can be learned from the repository, tools, issue tracker, or existing documentation?
 - What is the smallest useful workflow?
 - What assurance and human ownership level fit the task?
 
@@ -114,13 +114,13 @@ For meaningful work, recommend one ownership level:
 
 Line count is not review burden. Give extra attention to policy, ranking, data selection, evaluation methods, destructive behavior, and core architecture.
 
-## Project memory
+## Project artifacts
 
-When `.agent-journal/` exists, read only the entries relevant to the task and maintain it when meaningful project knowledge changes. The full contract is installed at `~/.agents/5stack/references/project-memory.md`.
-
-Do not create journal records for routine mechanics or trivial work. Store conclusions, not conversations. Current truth wins over history except for intentionally historical review and feedback records.
-
-Capture implicit 5stack feedback only after reassessing the interaction and concluding that it is a real workflow signal. Do not treat every complaint as proof that 5stack was wrong. Do not edit the 5stack system from a project feedback session.
+- Do not create persistent 5stack-specific files or directories in target projects.
+- Use code, tests, Git, existing project documentation, and the configured tracker as the sources of project truth.
+- Create or update normal project documentation only when the user requests it or the active task clearly includes that deliverable. Follow the repository's existing conventions.
+- Use a local disposable handoff only when work must survive an interruption and the harness cannot preserve enough context. Keep it outside the repository and do not treat it as project memory.
+- Feedback about 5stack must not write into the target project.
 
 ## Git workflow
 
