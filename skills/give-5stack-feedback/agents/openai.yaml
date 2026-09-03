@@ -1,0 +1,4 @@
+interface:
+  display_name: "Give 5stack Feedback"
+  short_description: "Correct the work and draft a feedback handoff"
+  default_prompt: "Use $give-5stack-feedback for this feedback about 5stack: "
