@@ -1,3 +1,5 @@
+![5stack banner](assets/5stack-banner.png)
+
 # 5stack
 
 5stack is a harness-agnostic operating contract for agentic software engineering. It aims to make agent work trustworthy and understandable without applying heavyweight process to every task.
