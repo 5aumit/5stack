@@ -78,7 +78,17 @@ for skill in "${OWNED_SKILLS[@]}"; do
   [[ -L "$TEST_AGENTS_DIR/skills/$skill" ]] || fail "installer did not link $skill"
 done
 
+mkdir -p "$TEST_AGENTS_DIR/5stack-backups/v1/skills/feedback"
+printf 'original feedback skill\n' > "$TEST_AGENTS_DIR/5stack-backups/v1/skills/feedback/SKILL.md"
+ln -s "$STACK_REPO/skills/5stack-setup" "$TEST_AGENTS_DIR/skills/5stack-setup"
+ln -s "$STACK_REPO/skills/feedback" "$TEST_AGENTS_DIR/skills/feedback"
+ln -s "$STACK_REPO/skills/reflect" "$TEST_AGENTS_DIR/skills/reflect"
+
 bash "$STACK_REPO/scripts/install.sh" --agents-dir "$TEST_AGENTS_DIR" >/dev/null
+[[ ! -e "$TEST_AGENTS_DIR/skills/5stack-setup" && ! -L "$TEST_AGENTS_DIR/skills/5stack-setup" ]] || fail "installer left legacy 5stack-setup"
+[[ -f "$TEST_AGENTS_DIR/skills/feedback/SKILL.md" ]] || fail "installer did not restore legacy feedback backup"
+[[ ! -e "$TEST_AGENTS_DIR/skills/reflect" && ! -L "$TEST_AGENTS_DIR/skills/reflect" ]] || fail "installer left legacy reflect"
+grep -q 'original feedback skill' "$TEST_AGENTS_DIR/skills/feedback/SKILL.md" || fail "installer restored wrong legacy feedback backup"
 
 bash "$STACK_REPO/scripts/uninstall.sh" --agents-dir "$TEST_AGENTS_DIR" >/dev/null
 [[ -f "$TEST_AGENTS_DIR/AGENTS.md" ]] || fail "uninstaller did not restore AGENTS.md"
@@ -92,5 +102,6 @@ for skill in "${OWNED_SKILLS[@]}"; do
 done
 grep -q 'original global instructions' "$TEST_AGENTS_DIR/AGENTS.md" || fail "wrong AGENTS.md restored"
 grep -q 'original implement skill' "$TEST_AGENTS_DIR/skills/implement/SKILL.md" || fail "wrong implement skill restored"
+grep -q 'original feedback skill' "$TEST_AGENTS_DIR/skills/feedback/SKILL.md" || fail "uninstaller changed restored legacy feedback backup"
 
 echo "5stack static and installer checks passed."

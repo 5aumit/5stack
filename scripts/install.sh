@@ -39,6 +39,7 @@ BACKUP_DIR="$AGENTS_DIR/5stack-backups/v1"
 SKILLS_DIR="$AGENTS_DIR/skills"
 ROOT_LINK="$AGENTS_DIR/5stack"
 mapfile -t OWNED_SKILLS < "$STACK_REPO/skills/owned.txt"
+LEGACY_SKILLS=(5stack-setup feedback reflect)
 
 say_action() {
   if ((DRY_RUN)); then
@@ -78,6 +79,39 @@ install_link() {
     ln -s -- "$source_path" "$target_path"
   fi
 }
+
+migrate_legacy_link() {
+  local source_path=$1 target_path=$2 backup_path=$3 expected_target actual_target
+  expected_target=$(readlink -m -- "$source_path")
+
+  if [[ -L "$target_path" ]]; then
+    actual_target=$(readlink -m -- "$target_path")
+    if [[ "$actual_target" != "$expected_target" ]]; then
+      echo "Leave non-5stack legacy link unchanged: $target_path"
+      return
+    fi
+    say_action "Remove legacy 5stack link $target_path"
+    ((!DRY_RUN)) && rm -- "$target_path"
+  elif [[ -e "$target_path" ]]; then
+    echo "Leave non-link legacy path unchanged: $target_path"
+    return
+  fi
+
+  if [[ -e "$backup_path" || -L "$backup_path" ]]; then
+    say_action "Restore $backup_path -> $target_path"
+    if ((!DRY_RUN)); then
+      mkdir -p -- "$(dirname -- "$target_path")"
+      mv -- "$backup_path" "$target_path"
+    fi
+  fi
+}
+
+for skill in "${LEGACY_SKILLS[@]}"; do
+  migrate_legacy_link \
+    "$STACK_REPO/skills/$skill" \
+    "$SKILLS_DIR/$skill" \
+    "$BACKUP_DIR/skills/$skill"
+done
 
 install_link "$STACK_REPO" "$ROOT_LINK" "$BACKUP_DIR/root"
 install_link "$STACK_REPO/AGENTS.md" "$AGENTS_DIR/AGENTS.md" "$BACKUP_DIR/AGENTS.md"
