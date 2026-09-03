@@ -2,9 +2,16 @@
 
 # 5stack
 
-5stack is a harness-agnostic operating contract for agentic software engineering. It aims to make agent work trustworthy and understandable without applying heavyweight process to every task.
+Develop with trust in yourself and your agent.
 
-V1 is optimized for one coding agent, one current branch or worktree, and one task at a time. It uses Markdown skills, lightweight behavioral scenarios, and reversible symlink installation. It has no workflow runtime or orchestration service.
+5stack gives agents room to investigate, implement, and verify routine work. Its ownership mapping keeps you in control of meaningful decisions, scope, risk, and irreversible actions, and shows when to delegate, review, or understand the work yourself.
+
+## Principles
+
+- Start with repository evidence and use the [smallest workflow that fits the task](AGENTS.md#implicit-routing-and-intent).
+- Set [assurance](AGENTS.md#assurance-and-human-ownership) to LIGHT, STANDARD, or HIGH based on the task's size, risk, and reversibility.
+- Set [ownership](AGENTS.md#assurance-and-human-ownership) to DELEGATE, REVIEW, or UNDERSTAND so users know their required involvement.
+- [Classify unexpected findings](AGENTS.md#findings-during-work) as MINOR, MEANINGFUL, DECISION, or CRITICAL, then act accordingly.
 
 ## Commands to remember
 
@@ -15,7 +22,7 @@ V1 is optimized for one coding agent, one current branch or worktree, and one ta
 
 Other workflows are selected through normal conversation or `/route`.
 
-5stack owns only skills whose behavior is part of its core contract or directly conflicts with that contract. Upstream `handoff`, `codebase-design`, and `improve-codebase-architecture` remain available without local forks. `/route` supersedes the upstream `/ask-matt` as the normal router.
+5stack owns only skills whose behavior is part of its core contract or directly conflicts with that contract. It does not replace or fork unrelated upstream skills.
 
 ## Install
 
