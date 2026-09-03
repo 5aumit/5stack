@@ -13,16 +13,7 @@ fail() {
 for required in \
   AGENTS.md \
   README.md \
-  references/project-memory.md \
   references/trust-handoff.md \
-  templates/project-agent-block.md \
-  templates/agent-journal/architecture.md \
-  templates/agent-journal/verification.md \
-  templates/agent-journal/ownership.md \
-  templates/agent-journal/uncertainties.md \
-  templates/agent-journal/5stack-feedback.md \
-  templates/agent-journal/decisions/README.md \
-  templates/agent-journal/reviews/README.md \
   evals/scenarios.md; do
   [[ -f "$STACK_REPO/$required" ]] || fail "missing $required"
 done

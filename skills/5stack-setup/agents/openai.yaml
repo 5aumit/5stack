@@ -1,4 +1,0 @@
-interface:
-  display_name: "5stack Setup"
-  short_description: "Prepare or repair a repository for 5stack"
-  default_prompt: "Use $5stack-setup to prepare this repository for 5stack."
