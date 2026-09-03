@@ -1,6 +1,6 @@
-# 5stack behavioral scenarios
+# 5stack maintainer behavioral scenarios
 
-These scenarios test agent decisions, not exact wording. Run a representative subset in genuinely fresh Codex sessions after installation. Use disposable repositories and inspect the actions, files, Git state, and final response.
+These scenarios are for maintainers who change 5stack. They test agent decisions, not exact wording. Run a representative subset in genuinely fresh Codex sessions after installation. Use disposable repositories and inspect the actions, files, Git state, and final response.
 
 ## 1. Tiny clear task
 

@@ -46,6 +46,8 @@ Run the uninstaller before moving this repository. If it was already moved, rest
 
 Feedback about 5stack stays in chat. A project session produces a sanitized prompt that the user may copy into a 5stack development session. Nothing is stored or sent automatically.
 
-## Development
+## Maintaining 5stack
 
-Behavior is the product. Changes should update or add a focused scenario in `evals/scenarios.md`, then exercise relevant scenarios in fresh sessions. Pasted feedback should be investigated with `/review-5stack-feedback` before changing 5stack.
+Normal users install and use 5stack. They do not need to run the scenarios in `evals/`.
+
+Maintainers use the scenarios to check 5stack behavior after a change. Changes should update or add a focused scenario in `evals/scenarios.md`, then exercise relevant scenarios in fresh sessions. Pasted feedback should be investigated with `/review-5stack-feedback` before changing 5stack.
