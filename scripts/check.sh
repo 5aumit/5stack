@@ -78,7 +78,21 @@ mkdir -p "$TEST_AGENTS_DIR/skills/implement"
 printf 'original global instructions\n' > "$TEST_AGENTS_DIR/AGENTS.md"
 printf 'original implement skill\n' > "$TEST_AGENTS_DIR/skills/implement/SKILL.md"
 
-bash "$STACK_REPO/scripts/install.sh" --agents-dir "$TEST_AGENTS_DIR" >/dev/null
+EMPTY_AGENTS_DIR="$CHECK_TMP/empty-agents"
+if bash "$STACK_REPO/scripts/install.sh" --agents-dir "$EMPTY_AGENTS_DIR" >/dev/null 2>&1; then
+  fail "installer created AGENTS.md without confirmation"
+fi
+[[ ! -e "$EMPTY_AGENTS_DIR/AGENTS.md" && ! -L "$EMPTY_AGENTS_DIR/AGENTS.md" ]] || fail "installer changed empty agents directory without confirmation"
+bash "$STACK_REPO/scripts/install.sh" --yes --agents-dir "$EMPTY_AGENTS_DIR" >/dev/null
+[[ -L "$EMPTY_AGENTS_DIR/AGENTS.md" ]] || fail "installer did not create AGENTS.md with explicit approval"
+
+if bash "$STACK_REPO/scripts/install.sh" --agents-dir "$TEST_AGENTS_DIR" >/dev/null 2>&1; then
+  fail "installer replaced AGENTS.md without confirmation"
+fi
+grep -q 'original global instructions' "$TEST_AGENTS_DIR/AGENTS.md" || fail "installer changed AGENTS.md after missing confirmation"
+[[ ! -e "$TEST_AGENTS_DIR/5stack" && ! -L "$TEST_AGENTS_DIR/5stack" ]] || fail "installer changed files before confirmation"
+
+bash "$STACK_REPO/scripts/install.sh" --yes --agents-dir "$TEST_AGENTS_DIR" >/dev/null
 [[ -L "$TEST_AGENTS_DIR/AGENTS.md" ]] || fail "installer did not link AGENTS.md"
 [[ -L "$TEST_AGENTS_DIR/5stack" ]] || fail "installer did not link the 5stack repository"
 for skill in "${OWNED_SKILLS[@]}"; do
@@ -91,7 +105,7 @@ ln -s "$STACK_REPO/skills/5stack-setup" "$TEST_AGENTS_DIR/skills/5stack-setup"
 ln -s "$STACK_REPO/skills/feedback" "$TEST_AGENTS_DIR/skills/feedback"
 ln -s "$STACK_REPO/skills/reflect" "$TEST_AGENTS_DIR/skills/reflect"
 
-bash "$STACK_REPO/scripts/install.sh" --agents-dir "$TEST_AGENTS_DIR" >/dev/null
+bash "$STACK_REPO/scripts/install.sh" --yes --agents-dir "$TEST_AGENTS_DIR" >/dev/null
 [[ ! -e "$TEST_AGENTS_DIR/skills/5stack-setup" && ! -L "$TEST_AGENTS_DIR/skills/5stack-setup" ]] || fail "installer left legacy 5stack-setup"
 [[ -f "$TEST_AGENTS_DIR/skills/feedback/SKILL.md" ]] || fail "installer did not restore legacy feedback backup"
 [[ ! -e "$TEST_AGENTS_DIR/skills/reflect" && ! -L "$TEST_AGENTS_DIR/skills/reflect" ]] || fail "installer left legacy reflect"

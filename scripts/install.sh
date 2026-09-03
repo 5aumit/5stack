@@ -5,15 +5,20 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 STACK_REPO=$(dirname -- "$SCRIPT_DIR")
 AGENTS_DIR="${HOME}/.agents"
 DRY_RUN=0
+ASSUME_YES=0
 
 usage() {
-  echo "Usage: $0 [--dry-run] [--agents-dir PATH]"
+  echo "Usage: $0 [--dry-run] [--yes] [--agents-dir PATH]"
 }
 
 while (($#)); do
   case "$1" in
     --dry-run)
       DRY_RUN=1
+      shift
+      ;;
+    -y|--yes)
+      ASSUME_YES=1
       shift
       ;;
     --agents-dir)
@@ -41,6 +46,40 @@ ROOT_LINK="$AGENTS_DIR/5stack"
 mapfile -t OWNED_SKILLS < "$STACK_REPO/skills/owned.txt"
 LEGACY_SKILLS=(5stack-setup feedback reflect)
 
+confirm_global_agents_installation() {
+  local target_path=$1 resolved_source resolved_target response has_existing=0
+  resolved_source=$(readlink -f -- "$STACK_REPO/AGENTS.md")
+
+  if [[ -L "$target_path" ]]; then
+    resolved_target=$(readlink -f -- "$target_path" 2>/dev/null || true)
+    [[ "$resolved_target" == "$resolved_source" ]] && return
+    has_existing=1
+  elif [[ -e "$target_path" ]]; then
+    has_existing=1
+  fi
+
+  if ((DRY_RUN || ASSUME_YES)); then
+    return
+  fi
+
+  [[ -t 0 ]] || {
+    echo "Refusing to install global instructions at $target_path without confirmation. Re-run interactively or pass --yes." >&2
+    exit 1
+  }
+
+  if ((has_existing)); then
+    echo "5stack will replace $target_path with a symlink to $STACK_REPO/AGENTS.md."
+    echo "The current path will be moved to $BACKUP_DIR/AGENTS.md."
+  else
+    echo "5stack will create $target_path as a symlink to $STACK_REPO/AGENTS.md."
+  fi
+  read -r -p "Continue? [y/N] " response
+  [[ "$response" =~ ^[Yy]([Ee][Ss])?$ ]] || {
+    echo "Installation cancelled."
+    exit 1
+  }
+}
+
 say_action() {
   if ((DRY_RUN)); then
     echo "DRY RUN: $*"
@@ -48,6 +87,8 @@ say_action() {
     echo "$*"
   fi
 }
+
+confirm_global_agents_installation "$AGENTS_DIR/AGENTS.md"
 
 install_link() {
   local source_path=$1 target_path=$2 backup_path=$3 resolved_source resolved_target

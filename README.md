@@ -24,7 +24,13 @@ bash scripts/check.sh
 bash scripts/install.sh
 ```
 
-The installer links the repository at `~/.agents/5stack`, then links 5stack-owned instructions and skills into `~/.agents`. It backs up conflicting files and does not remove unrelated skills. Start a fresh Codex session after installation.
+The installer links the repository at `~/.agents/5stack`, then links 5stack-owned instructions and skills into `~/.agents`. Before creating or replacing `~/.agents/AGENTS.md`, it shows the change and asks for confirmation before making any changes. When replacing an existing path, it also shows its backup path. It backs up conflicting files and does not remove unrelated skills. Start a fresh Codex session after installation.
+
+For noninteractive use, pass `--yes` to explicitly approve installing global instructions:
+
+```bash
+bash scripts/install.sh --yes
+```
 
 To preview changes:
 
