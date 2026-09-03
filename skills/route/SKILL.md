@@ -29,4 +29,4 @@ Use a compact result:
 - **Ownership forecast:** DELEGATE, REVIEW, or UNDERSTAND.
 - **Added process:** only steps that earn their cost, or `None`.
 
-If the current repository is 5stack and the user invokes `review-5stack-feedback` or supplies a generated handoff for review, use that workflow.
+Use `review-5stack-feedback` only when the user explicitly invokes it in the 5stack repository.

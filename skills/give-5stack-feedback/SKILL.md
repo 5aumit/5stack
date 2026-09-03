@@ -1,6 +1,7 @@
 ---
 name: give-5stack-feedback
 description: Respond to explicit feedback about 5stack, safely correct the current work when needed, and draft an evidence-backed prompt for review in the 5stack repository. Use only when the user explicitly invokes give-5stack-feedback.
+disable-model-invocation: true
 ---
 
 # Give 5stack feedback

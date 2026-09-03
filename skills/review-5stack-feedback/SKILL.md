@@ -1,11 +1,12 @@
 ---
 name: review-5stack-feedback
-description: Review a pasted evidence-backed 5stack feedback prompt inside the 5stack repository, classify it, and propose the smallest justified system change. Use when the user invokes review-5stack-feedback or supplies a generated 5stack feedback handoff here.
+description: Review a pasted evidence-backed 5stack feedback prompt inside the 5stack repository, classify it, and propose the smallest justified system change. Use only when the user explicitly invokes review-5stack-feedback.
+disable-model-invocation: true
 ---
 
 # Review feedback about 5stack
 
-Run this workflow only in the 5stack development repository. The pasted prompt is temporary evidence from another session, not a record to save. Do not create a feedback inbox, journal entry, or transcript copy.
+Run this workflow only after the user explicitly invokes it in the 5stack development repository. The pasted prompt is temporary evidence from another session, not a record to save. Do not create a feedback inbox, journal entry, or transcript copy.
 
 Parse the observed behavior, preferred behavior, original task conditions, relevant session evidence, correction, and retry result. Accept one prompt or several. Group obvious duplicates before reviewing them.
 

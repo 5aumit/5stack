@@ -34,6 +34,13 @@ done
 duplicates=$(printf '%s\n' "${skill_names[@]}" | sort | uniq -d)
 [[ -z "$duplicates" ]] || fail "duplicate skill names: $duplicates"
 
+for skill in give-5stack-feedback reflect-5stack review-5stack-feedback; do
+  skill_file="$STACK_REPO/skills/$skill/SKILL.md"
+  ui_file="$STACK_REPO/skills/$skill/agents/openai.yaml"
+  grep -qx 'disable-model-invocation: true' "$skill_file" || fail "$skill must require explicit invocation"
+  grep -qx '  allow_implicit_invocation: false' "$ui_file" || fail "$skill UI metadata must disable implicit invocation"
+done
+
 if command -v ruby >/dev/null; then
   ruby -ryaml -e '
     ARGV.each do |file|

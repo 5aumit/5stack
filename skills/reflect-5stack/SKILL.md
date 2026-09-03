@@ -1,6 +1,7 @@
 ---
 name: reflect-5stack
 description: Inspect the current session for useful feedback about 5stack and draft evidence-backed prompts for review in the 5stack repository without saving artifacts. Use only when the user explicitly invokes reflect-5stack.
+disable-model-invocation: true
 ---
 
 # Reflect on 5stack
