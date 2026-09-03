@@ -1,20 +1,26 @@
 ---
 name: review-5stack-feedback
-description: Inside the 5stack repository, analyze accumulated project feedback and propose evidence-backed systemic improvements without mutating 5stack before approval.
+description: Review a pasted evidence-backed 5stack feedback prompt inside the 5stack repository, classify it, and propose the smallest justified system change. Use when the user invokes review-5stack-feedback or supplies a generated 5stack feedback handoff here.
 ---
 
 # Review feedback about 5stack
 
-This is an internal model-invoked workflow. Trigger it when the user is in the 5stack repository and supplies accumulated project feedback or asks to improve 5stack from feedback. Do not require the user to remember this skill name.
+Run this workflow only in the 5stack development repository. The pasted prompt is temporary evidence from another session, not a record to save. Do not create a feedback inbox, journal entry, or transcript copy.
 
-Parse and deduplicate the observations. For each group:
+Parse the observed behavior, preferred behavior, original task conditions, relevant session evidence, correction, and retry result. Accept one prompt or several. Group obvious duplicates before reviewing them.
+
+For each distinct feedback theme:
 
 1. Inspect its recorded 5stack commit when available.
 2. Inspect current policy, relevant skills, eval scenarios, and Git history.
-3. Classify it as already addressed, usage or configuration issue, project-specific issue, or genuine systemic issue.
-4. Explain already-addressed or project-specific items without changing 5stack.
-5. For a systemic issue, add or update the smallest behavioral regression scenario and propose the smallest effective 5stack change.
+3. Check whether the supplied session evidence actually supports the claimed behavior. Treat excerpts and summaries as evidence, not infallible conclusions.
+4. Classify it as already addressed, a usage or routing issue, project- or model-specific, insufficiently supported, or a genuine systemic signal.
+5. Explain items that do not warrant a 5stack change.
+6. For a negative systemic signal, propose the smallest behavioral regression scenario and effective 5stack change.
+7. For a positive systemic signal, state what should be preserved and add a regression scenario only when it protects behavior likely to regress.
 
-Show the proposed diff before editing. One observation is evidence, not automatic proof of a systemic defect. Preserve good behavior while fixing bad behavior.
+One observation is evidence, not automatic proof of a systemic defect. Prefer tightening an existing instruction or skill over adding a new layer. Preserve useful behavior while fixing the demonstrated problem.
 
-Ask for explicit approval of both the edits and a local commit. Only then modify 5stack and commit the approved change. Never push, merge, create a branch or worktree, or change remote state.
+Report the classification and supporting repository evidence first. For any proposed change, show the proposed diff before editing and wait for explicit approval. Approval to edit does not authorize a commit or remote action unless the user says so separately. Never push, merge, create a branch or worktree, or change remote state without explicit authority.
+
+After approved edits, run the closest repository checks and any focused fresh-session scenario that materially strengthens confidence. Report the result and remaining uncertainty. Do not persist the pasted feedback after its useful behavior has been encoded in 5stack.
