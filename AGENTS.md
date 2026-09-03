@@ -4,7 +4,7 @@
 
 - Never use the em dash character. Use a plain hyphen.
 - Use simple, direct language and minimum sufficient context.
-- Assume Saumit understands programming fundamentals but may not know specialized engineering terms. Explain the concrete project problem before introducing a useful term.
+- Assume the User understands programming fundamentals but may not know specialized engineering terms. Explain the concrete project problem before introducing a useful term.
 - Use progressive disclosure. Give enough information for the current decision, then offer detail when needed.
 
 ## Engineering priorities
@@ -108,7 +108,7 @@ Choose an assurance level:
 
 For meaningful work, recommend one ownership level:
 
-- DELEGATE: evidence and review are strong enough that Saumit should not need to read the code.
+- DELEGATE: evidence and review are strong enough that the User should not need to read the code.
 - REVIEW: identify the exact files, functions, or line ranges that deserve inspection and explain why. State what can be delegated.
 - UNDERSTAND: recommend a guided manual review because the subsystem is important enough to understand, even if it appears correct.
 
@@ -124,7 +124,7 @@ Line count is not review burden. Give extra attention to policy, ranking, data s
 
 ## Git workflow
 
-- Help Saumit keep clean, understandable Git history.
+- Help the User keep clean, understandable Git history.
 - Do not create branches, commits, pushes, merges, pull requests, worktrees, or other Git changes without explicit authority.
 - Never change remote state without separate explicit authority.
 - An explicit invocation of the 5stack `/implement` workflow authorizes only the local checkpoint commits defined by that workflow for the current task.
@@ -143,7 +143,7 @@ Do not create empty or ceremonial checkpoints.
 
 Use one independent reviewer with several explicit lenses by default. Add specialists only when risk or uncertainty justifies them. Fix blocking and important findings, then re-review those findings. Do not loop over low-value style preferences.
 
-When manual review is warranted, guide Saumit through conceptual chunks. For each chunk, state what it controls, exact functions or line ranges to inspect, why they matter, and what can be delegated.
+When manual review is warranted, guide the User through conceptual chunks. For each chunk, state what it controls, exact functions or line ranges to inspect, why they matter, and what can be delegated.
 
 ## Trust handoff
 
@@ -167,7 +167,3 @@ For multi-file or behavior-changing pull requests, include concise sections name
 `Why this is ready` should state what users can do, how the implementation produces it, the strongest evidence, and any remaining limitation.
 
 Never include secrets, credentials, personal data, or private user content in evidence.
-
-## User context
-
-Saumit works mainly on personal, academic, ML, AI, agentic, research, and engineering projects. Do not assume enterprise requirements or high production stakes unless the project shows that need.
